@@ -4,18 +4,16 @@ This repository contains the code for pruning any given architecture according t
 
 The main idea is to introduce a single trainable parameter per layer which controls the sparsity of the layer. This extra parameter acts as the threshold of a pruning operation (any weight under this threshold is pruned) and is optimized with respect to a multi-task loss consisted of the task loss and the sparsity controlling loss (user provides a requested target sparsity). 
 
-The sparsity controlling loss, the main novelty of *"Weight Pruning via Adaptive Sparsity Loss"*, relies on the assumption of a Gaussian distribution over the weights at each layer.  Such assumption, retained by the application of Straight Through Estimator [[arxiv]](https://arxiv.org/abs/1308.3432) at each pruning operation, enables us to formulate the sparsity at each layer as an analytic function w.r.t to first order statistics (mean value and standard deviation) and the trainable parameter $b$: 
+The sparsity controlling loss, the main novelty of *"Weight Pruning via Adaptive Sparsity Loss"*, relies on the assumption of a Gaussian distribution over the weights at each layer.  Such assumption, retained by the application of Straight Through Estimator [[arxiv]](https://arxiv.org/abs/1308.3432) at each pruning operation, enables us to formulate the sparsity at each layer as an analytic function w.r.t to first order statistics (mean value and standard deviation) and the trainable pruning parameter, using the *erf* function. For a detailed description of the adaptive sparsity loss formulation, see the paper [[arxiv]](https://arxiv.org/abs/2006.02768).
 
-***sparsity:*** $s  = \text{erf}(\frac{b}{\sigma \sqrt{2}})$ ,  where  $\text{erf}(x) = \frac{1}{\sqrt{\pi}}\int_{-x}^{x}e^{-t^2}dt$     *(error function)*
+<!---***sparsity:*** $s  = \text{erf}(\frac{b}{\sigma \sqrt{2}})$ ,  where  $\text{erf}(x) = \frac{1}{\sqrt{\pi}}\int_{-x}^{x}e^{-t^2}dt$     *(error function)*--->
 
-***pruning function:*** $f_{prune}(w; b) =
+<!---***pruning function:*** $f_{prune}(w; b) =
     \begin{cases}
       0, & \text{if}\ |w| < b \\
       w, & \text{otherwise}
-    \end{cases}$
+    \end{cases}$--->
     
-For a detailed description of the adaptive sparsity loss formulation, see the paper [[arxiv]](https://arxiv.org/abs/2006.02768).
-
 The sparsity loss can be formulated according to the user's needs (see paper) and the basic tools for sparsifying any architecture are provided at *sparse_utils.py*. An example of using these sparsity tools is also provided for the setting of Wide ResNets [[arxiv]](https://arxiv.org/abs/1605.07146) and the CIFAR100 dataset.
 
 
