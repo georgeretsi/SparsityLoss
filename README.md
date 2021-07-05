@@ -64,3 +64,16 @@ The file *sparse_utils.py* contains the pruning-related functions that can be ap
  - iter_desparsify(model): remove the extra threshold parameters and returns the sparsified model (used after the training procedure).
  - sparsity(model, print_per_layer=False): computes and prints the per layer and the overall sparsity of the network.
  - adaptive_loss(model, reduce=True): returns the sparsity at each layer (*reduce=False*). When the *reduce* is set to True, an overall sparsity loss is computed w.r.t. the parameters of the network (weighted average of the per layer sparsities). 
+
+-------------------------------------------------------------------------
+### Citing:
+
+```
+@inproceedings{retsinas2021weight,
+  title={Weight Pruning via Adaptive Sparsity Loss},
+  author={Retsinas, George and Elafrou, Athena and Goumas, Georgios and Maragos, Petros},
+  booktitle={2021 IEEE international conference on image processing (ICIP)},
+  year={2021},
+  organization={IEEE}
+}
+```
