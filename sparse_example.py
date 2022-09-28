@@ -117,7 +117,7 @@ def train(epoch):
             # if we want fixed sparsity per layer as a trainable procedure (ensuring smoother convergence)    
             eloss = args.lv * ((adaptive_loss(model, False, reduce=False) - 1 +  args.starget)**2).mean()
         elif args.sparsity == 'adaptive':
-            eloss = args.lv * (adaptive_loss(model, False)[0] - 1 + args.starget)**2
+            eloss = args.lv * (adaptive_loss(model, True)[0] - 1 + args.starget)**2
             # if an upper bound of (parameter) sparsity is defined: 
             #eloss = args.lv * F.relu(adaptive_loss(model, False)[0] - args.starget)
 
